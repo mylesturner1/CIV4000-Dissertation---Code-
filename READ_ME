@@ -1,1 +1,57 @@
-## CIV4000 - All code used within dissertation
+## CIV4000 - All code used within dissertation - 'Investigating Optimisation of Deep Foundation Design using Artificial Neural Networks'
+# This code will be mad epublic upon submission of the dissertation.
+# Note .csv files are too large to insert into this GitHub, but raw .csv files are input here - if Stage_X_training_set code is run, then this will generate the .csv files locally, these can then be input into model files and used to test code.
+
+## Structure - 5 Models + 1 Preprocessing of Data Stage
+
+
+## Stage 0 - Preprocessing of Raw AGS Input Data
+1. A1B2CH_Confidential.txt - Raw AGS File
+2. Stage_0_Extracting_and_Cleaning_CPT_Data - Training, Validating and Testing datasets created from processed CPTu data
+  Creates - CPTu_train_set.csv, CPTu_val_set.csv, CPTu_test_set.csv, Stage_0_raw_qc_values.csv, Stage_0_raw_pwp_values.csv
+3. Functions.CPTu_Cap_Copy.py - Contains all functions used throughout all models
+
+
+# Stage 1 - Calculating Bearing Capacity from Pile Length and CPTu Data Input
+1. Stage_1_Training_Set - Inputs (CPTu_train_set.csv, CPTu_val_set.csv, CPTu_test_set.csv)
+  Creates - Stage_1_traind_merged_reduced.csv, Stage_1_vald_merged_reduced.csv, Stage_1_testd_merged_reduced.csv
+
+2. Stage_1_Model_PyTorch_HPC - Inputs (Stage_1_traind_merged_reduced.csv, Stage_1_vald_merged_reduced.csv, Stage_1_testd_merged_reduced.csv)
+  Creates - S1_loss21.txt, S1_model21.pth, S1_scalers21.joblib
+
+
+
+# Stage 2 - Calculating Bearing Capacity from Pile Length, Diameter amd CPTu Data Input
+1. Stage_2_Training_Set - Inputs (CPTu_train_set.csv, CPTu_val_set.csv, CPTu_test_set.csv)
+  Creates - Stage_2_traind_merged_reduced3.csv, Stage_2_vald_merged_reduced3.csv, Stage_2_testd_merged_reduced3.csv
+
+2. Stage_2_Model_PyTorch_HPC - Inputs (Stage_2_traind_merged_reduced3.csv, Stage_2_vald_merged_reduced3.csv, Stage_2_testd_merged_reduced3.csv)
+  Creates - S2_loss21.txt, S2_model21.pth, S2_scalers21.joblib
+
+
+
+# Stage 3 - Calculating Optimised Pile Length from Required Bearing Capacity and CPTu Data Input
+1. Stage_3_Training_Set - Inputs (CPTu_train_set.csv, CPTu_val_set.csv, CPTu_test_set.csv)
+  Creates - Stage_3_traind_merged_reduced.csv, Stage_3_vald_merged_reduced.csv, Stage_3_testd_merged_reduced.csv
+
+2. Stage_3_Model_PyTorch_HPC - Inputs (Stage_3_traind_merged_reduced.csv, Stage_3_vald_merged_reduced.csv, Stage_3_testd_merged_reduced.csv)
+  Creates - S3_loss21.txt, S3_model21.pth, S3_scalers21.joblib
+
+
+
+# Stage 4 - Calculating Optimised Pile Length and Diameter from Required Bearing Capacity and CPTu Data Input
+1. Stage_4_Training_Set - Inputs (CPTu_train_set.csv, CPTu_val_set.csv, CPTu_test_set.csv)
+  Creates - Stage_4_traind_merged_reduced.csv, Stage_4_vald_merged_reduced.csv, Stage_4_testd_merged_reduced.csv
+
+2. Stage_4_Model_PyTorch_HPC - Inputs (Stage_4_traind_merged_reduced.csv, Stage_4_vald_merged_reduced.csv, Stage_4_testd_merged_reduced.csv)
+  Creates - S4_loss21.txt, S4_model21.pth, S4_scalers21.joblib
+
+
+
+# Stage 5 - Calculating Bearing Capacity from Length Input and Summarised CPTu values
+1. Stage_5_Training_Set_Feature_Extraction - Inputs (Stage_0_raw_qc_values.csv, Stage_0_raw_pwp_values.csv)
+  Creates - Stage_1_traind_stats_merged2.csv, Stage_1_vald_stats_merged2.csv, Stage_1_testd_stats_merged2.csv
+
+2. Stage_1_Model_PyTorch_HPC - Inputs (Stage_1_traind_stats_merged2.csv, Stage_1_vald_stats_merged2.csv, Stage_1_testd_stats_merged2.csv)
+  Creates - S1_loss25.txt, S1_model25.pth, S1_scalers25.joblib
+
